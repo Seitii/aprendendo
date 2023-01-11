@@ -1,16 +1,20 @@
-# This is a sample Python script.
+pessoas = [('Lisboa', 'LIS'),
+           ('Madrid', 'MAD'),
+           ('Paris', "CDG"),
+           ('Dublin', 'DUB'),
+           ('Bruxelas', 'BRU'),
+           ('Londres', 'LHR')]
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+destino = 'FCO'
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+voos = {}
+for linha in open('flights.txt'):
+  #print(linha)
+  #print(linha.split(', '))
+  origem, destino, saida, chegada, preco = linha.split(',')
+  voos.setdefault((origem, destino), []) #ADICONA DENTRO DO DICIONARIO, CASO NAO EXISTIR A ORIGEM DESTINO
+  voos[(origem, destino)].append((saida, chegada, int(preco)))
 
+voos
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
